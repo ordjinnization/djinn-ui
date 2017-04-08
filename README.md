@@ -1,2 +1,0 @@
-# djinn-ui
-Jenkins statistics.
