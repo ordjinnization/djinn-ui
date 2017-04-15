@@ -4,9 +4,8 @@
 'use strict';
 
 import React, {PropTypes} from 'react';
-import {Link, IndexLink} from 'react-router';
+import {IndexLink, Link} from 'react-router';
 import AppBar from 'material-ui/AppBar';
-
 
 const styles = {
   appBar: {
@@ -23,7 +22,7 @@ const styles = {
  */
 let createTitles = () => {
   return <div>
-    <div style={{paddingTop: 10}}>jstats</div>
+    <div style={{paddingTop: 10}}>Djinn</div>
     <div style={{fontSize: 'small'}}>Jenkins Build Statistics</div>
   </div>
 };

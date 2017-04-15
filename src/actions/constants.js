@@ -1,0 +1,8 @@
+/**
+ *
+ */
+'use strict';
+
+export const REQUEST_HEATMAP = 'REQUEST_HEATMAP';
+export const REQUEST_HEATMAP_SUCCESS = 'REQUEST_HEATMAP_SUCCESS';
+export const REQUEST_HEATMAP_FAILURE = 'REQUEST_HEATMAP_FAILURE';
