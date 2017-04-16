@@ -9,6 +9,6 @@ import {fetchHeatmap} from '../services/djinnApi';
 
 export function* fetchHeatmapSaga() {
   const response = yield call(fetchHeatmap);
-  yield put(requestHeatmapSuccess(response))
+  yield put(requestHeatmapSuccess(response));
 }
 

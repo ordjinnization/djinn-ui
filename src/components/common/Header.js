@@ -21,10 +21,10 @@ const STYLES = Object.freeze({
  * @returns {XML}
  */
 let createTitles = () => {
-  return <div>
+  return (<div>
     <div style={{paddingTop: 10}}>Djinn</div>
     <div style={{fontSize: 'small'}}>Jenkins Build Statistics</div>
-  </div>
+  </div>);
 };
 
 export class Header extends React.Component {
@@ -37,7 +37,6 @@ export class Header extends React.Component {
 
   handleToggle() {
     this.setState({open: !this.state.open});
-    console.log("open")
   }
 
   handleClose() {

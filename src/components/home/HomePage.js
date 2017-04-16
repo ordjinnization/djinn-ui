@@ -27,9 +27,9 @@ class HomePage extends React.Component {
   render() {
     let heatMapData = this.props.heatmapData;
     if (Object.keys(heatMapData).length === 0 && heatMapData.constructor === Object) {
-      return <div>Loading</div>
+      return <div>Loading</div>;
     }
-    return <div style={STYLE}>
+    return (<div style={STYLE}>
       <Paper style={{padding: 20, height: '800px'}}>
         <div style={{whitespace: 'nowrap'}}>
           <h1 style={{float: 'left'}}>Stats!</h1>
@@ -39,24 +39,25 @@ class HomePage extends React.Component {
           <Heatmap heatmapData={this.props.heatmapData} />
         </div>
       </Paper>
-    </div>
+    </div>);
   }
 }
 
 HomePage.propTypes = {
-  requestHeatmap: PropTypes.func.isRequired
+  requestHeatmap: PropTypes.func.isRequired,
+  heatmapData: PropTypes.object.isRequired
 };
 
 const mapStateToProps = (state) => {
   return {
     heatmapData: state.heatmap
-  }
+  };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
     requestHeatmap: () => dispatch(requestHeatmap()),
-  }
+  };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomePage);

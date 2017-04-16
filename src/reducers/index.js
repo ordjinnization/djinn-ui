@@ -9,6 +9,6 @@ export default function heatmap(state = {}, action) {
     case REQUEST_HEATMAP_SUCCESS:
       return action.heatmapData;
     default:
-      return state
+      return state;
   }
 }

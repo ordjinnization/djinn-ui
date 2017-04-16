@@ -69,7 +69,7 @@ const nullToUnknown = (ref) => {
 const cleanData = (data) => {
   data.x = data.x.map(item => nullToUnknown(item));
   data.y = data.y.map(item => nullToUnknown(item));
-  return data
+  return data;
 };
 
 
@@ -96,7 +96,7 @@ export const Heatmap = ({heatmapData}) => {
   data.colorscale = COLOURSCALE_VALUE;
 
   return (
-    <PlotlyComponent className="whatever" data={[data]} layout={LAYOUT}
+    <PlotlyComponent className='project-stage-heatmap' data={[data]} layout={LAYOUT}
                      config={CONFIG} />
   );
 };

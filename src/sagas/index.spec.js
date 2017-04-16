@@ -20,6 +20,6 @@ describe('heatmap', () => {
     gen.next();
     const expected = put(requestHeatmapSuccess({test:'test'}));
     const result = gen.next({test:'test'}).value;
-    expect(result).toEqual(expected)
+    expect(result).toEqual(expected);
   });
 });
