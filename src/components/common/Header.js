@@ -6,7 +6,8 @@
 import React, {PropTypes} from 'react';
 import {IndexLink, Link} from 'react-router';
 import AppBar from 'material-ui/AppBar';
-
+import Toolbar from 'material-ui/Toolbar';
+import Text from 'material-ui/Text';
 const STYLES = Object.freeze({
   appBar: {
     flexWrap: 'wrap',
@@ -46,12 +47,11 @@ export class Header extends React.Component {
   render() {
     return (
       <div>
-        <AppBar showMenuIconButton={false}
-                style={STYLES.appBar}
-                titleStyle={{lineHeight: 'normal'}}
-                onLeftIconButtonTouchTap={this.handleToggle}
-                title={createTitles()} />
-        <br />
+        <AppBar>
+          <Toolbar>
+            <Text type="title" colorInherit>{createTitles()}</Text>
+          </Toolbar>
+        </AppBar>
       </div>
     );
   }

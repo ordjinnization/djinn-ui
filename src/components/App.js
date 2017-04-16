@@ -10,7 +10,7 @@ import {connect} from 'react-redux';
 class App extends React.Component {
   render() {
     return (
-      <div className='container-fluid'>
+      <div className='container-fluid' style={{marginTop:'80px'}}>
         <Header />
         {this.props.children}
       </div>

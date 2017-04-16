@@ -20,11 +20,12 @@
   "author": "Stephen O'Brien",
   "license": "MIT",
   "dependencies": {
+    "axios": "^0.16.1",
     "babel-polyfill": "6.20.0",
     "bootstrap": "3.3.7",
     "history": "^4.6.1",
     "jquery": "3.1.1",
-    "material-ui": "^0.17.4",
+    "material-ui": "^1.0.0-alpha.11",
     "plotly.js": "^1.25.2",
     "react": "15.4.2",
     "react-dom": "15.4.2",

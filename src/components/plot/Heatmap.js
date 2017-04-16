@@ -25,7 +25,7 @@ const LAYOUT = Object.freeze({
   height: '700',
   title: 'Stage Failures',
   xaxis: {
-    tickangle: 20,
+    tickangle: 22,
     tickfont: {
       family: 'Old Standard TT, serif',
       size: 14,
