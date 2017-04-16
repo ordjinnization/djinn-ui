@@ -20,7 +20,7 @@ const init = (heatmapData) => {
   const props = {
     heatmapData
   };
-  return shallow(<Heatmap {...props} />)
+  return shallow(<Heatmap {...props} />);
 };
 
 describe('heatmap component', () => {
@@ -35,7 +35,6 @@ describe('heatmap component', () => {
     beforeEach(() => {
       const wrapper = init(CUSTOM_DATA);
       const props = wrapper.find('Plotly').props();
-      console.log(props)
       data = props.data[0];
     });
 
@@ -61,7 +60,7 @@ describe('heatmap component', () => {
         "Stage: Unknown<br>Application: Titan<br>Failures: 4"
       ]];
       expect(data.text).to.deep.equal(expected);
-    })
+    });
   });
 
 });
