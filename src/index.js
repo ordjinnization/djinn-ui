@@ -11,10 +11,8 @@ import {browserHistory, IndexRoute, Route, Router} from 'react-router';
 import {push, routerMiddleware, routerReducer, syncHistoryWithStore} from 'react-router-redux';
 import '../node_modules/toastr/build/toastr.min.css';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-
 import {applyMiddleware, combineReducers, createStore} from 'redux';
 import createSagaMiddleware from 'redux-saga';
-
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import './styles/materialIcons.css';
 import './styles/styles.css';

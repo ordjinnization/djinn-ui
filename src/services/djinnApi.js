@@ -2,7 +2,11 @@
  *
  */
 'use strict';
+import axios from 'axios';
+import config from '../config';
+
+const djinn = axios.create({baseURL: config.djinnUrl});
 
 export function fetchHeatmap() {
-  return fetch('http://localhost:8000/heatmap').then(response => response.json());
+  return djinn.get('/heatmap/').then(({data}) => data);
 }
