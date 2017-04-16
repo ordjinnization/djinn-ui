@@ -58,15 +58,16 @@ const CONFIG = Object.freeze({
 });
 
 /**
- * Return 'Unknown' if ref is null.
- * @param ref the reference
- * @returns {string}
+ * Find null's and convert to 'Unknown' in an object of two
+ * keys 'x' and 'y' pointing at lists.
+ * @param data the data to clean.
+ * @returns {Object} the cleaned data.
  */
-const nullToUnknown = (ref) => {
-  return ref === null ? 'Unknown' : ref;
-};
-
 const cleanData = (data) => {
+  const nullToUnknown = (ref) => {
+    return ref === null ? 'Unknown' : ref;
+  };
+  data = Object.assign({}, data);
   data.x = data.x.map(item => nullToUnknown(item));
   data.y = data.y.map(item => nullToUnknown(item));
   return data;
@@ -92,7 +93,6 @@ export const Heatmap = ({heatmapData}) => {
 
   data.type = 'heatmap';
   data.hoverinfo = 'text';
-  data.type = 'heatmap';
   data.colorscale = COLOURSCALE_VALUE;
 
   return (
