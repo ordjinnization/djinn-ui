@@ -51,6 +51,7 @@ dist/
 
 # Idea
 .idea/
+*.iml
 
 # Nix
 result

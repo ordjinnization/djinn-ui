@@ -4,28 +4,27 @@
 'use strict';
 
 import React, {PropTypes} from 'react';
-import {Link, IndexLink} from 'react-router';
+import {IndexLink, Link} from 'react-router';
 import AppBar from 'material-ui/AppBar';
 
-
-const styles = {
+const STYLES = Object.freeze({
   appBar: {
     flexWrap: 'wrap',
   },
   tabs: {
     width: '100%',
   }
-};
+});
 
 /**
  * Build a title and subtitle.
  * @returns {XML}
  */
 let createTitles = () => {
-  return <div>
-    <div style={{paddingTop: 10}}>jstats</div>
+  return (<div>
+    <div style={{paddingTop: 10}}>Djinn</div>
     <div style={{fontSize: 'small'}}>Jenkins Build Statistics</div>
-  </div>
+  </div>);
 };
 
 export class Header extends React.Component {
@@ -38,7 +37,6 @@ export class Header extends React.Component {
 
   handleToggle() {
     this.setState({open: !this.state.open});
-    console.log("open")
   }
 
   handleClose() {
@@ -49,7 +47,7 @@ export class Header extends React.Component {
     return (
       <div>
         <AppBar showMenuIconButton={false}
-                style={styles.appBar}
+                style={STYLES.appBar}
                 titleStyle={{lineHeight: 'normal'}}
                 onLeftIconButtonTouchTap={this.handleToggle}
                 title={createTitles()} />
