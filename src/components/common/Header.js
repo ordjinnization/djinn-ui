@@ -7,14 +7,14 @@ import React, {PropTypes} from 'react';
 import {IndexLink, Link} from 'react-router';
 import AppBar from 'material-ui/AppBar';
 
-const styles = {
+const STYLES = Object.freeze({
   appBar: {
     flexWrap: 'wrap',
   },
   tabs: {
     width: '100%',
   }
-};
+});
 
 /**
  * Build a title and subtitle.
@@ -48,7 +48,7 @@ export class Header extends React.Component {
     return (
       <div>
         <AppBar showMenuIconButton={false}
-                style={styles.appBar}
+                style={STYLES.appBar}
                 titleStyle={{lineHeight: 'normal'}}
                 onLeftIconButtonTouchTap={this.handleToggle}
                 title={createTitles()} />

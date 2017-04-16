@@ -8,19 +8,19 @@ const PlotlyComponent = createPlotlyComponent(Plotly);
 /**
  * A green -> yellow -> red colour scale.
  */
-const COLOURSCALE_VALUE = [
+const COLOURSCALE_VALUE = Object.freeze([
   ['0.0', 'rgb(0,153,51)'],
   ['0.2', 'rgb(255,250,0)'],
   ['0.3', 'rgb(255,200,0)'],
   ['0.5', 'rgb(255,150,0)'],
   ['0.8', 'rgb(255,50,0)'],
   ['1.0', 'rgb(255,0,0)']
-];
+]);
 
 /**
  * Default layout.
  */
-const LAYOUT = {
+const LAYOUT = Object.freeze({
   autosize: true,
   height: '700',
   title: 'Stage Failures',
@@ -47,15 +47,15 @@ const LAYOUT = {
     t: 100,
     pad: 4
   }
-};
+});
 
 /**
  * Default config.
  */
-const CONFIG = {
+const CONFIG = Object.freeze({
   showLink: false,
   displayModeBar: true
-};
+});
 
 /**
  * Return 'Unknown' if ref is null.

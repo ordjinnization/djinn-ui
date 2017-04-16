@@ -9,10 +9,10 @@ import Heatmap from '../plot/Heatmap';
 import {connect} from 'react-redux';
 import {requestHeatmap} from '../../actions/index';
 
-const style = {
+const STYLE = Object.freeze({
   paddingLeft: 20,
   paddingRight: 20,
-};
+});
 
 class HomePage extends React.Component {
 
@@ -29,7 +29,7 @@ class HomePage extends React.Component {
     if (Object.keys(heatMapData).length === 0 && heatMapData.constructor === Object) {
       return <div>Loading</div>
     }
-    return <div style={style}>
+    return <div style={STYLE}>
       <Paper style={{padding: 20, height: '800px'}}>
         <div style={{whitespace: 'nowrap'}}>
           <h1 style={{float: 'left'}}>Stats!</h1>
