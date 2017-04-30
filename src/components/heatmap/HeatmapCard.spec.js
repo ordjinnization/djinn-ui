@@ -30,10 +30,9 @@ const init = (data) => {
 };
 
 describe('Heatmap Card initialization', () => {
-
   it('should send a request for heatmap data', () => {
     const store = mockStore({heatmap: {}});
     mount(<MuiThemeProvider><HeatmapCard store={store} /></MuiThemeProvider>);
     expect(store.getActions()).to.deep.equal([{type: 'REQUEST_HEATMAP'}])
-  })
+  });
 });

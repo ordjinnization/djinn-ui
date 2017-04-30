@@ -11,6 +11,8 @@ import Heatmap from '../heatmap/Heatmap';
 import {connect} from 'react-redux';
 import {requestHeatmap} from '../../actions/index';
 import transform from './transform';
+import HeatmapConfiguration from './HeatmapConfiguration';
+
 
 const STYLE = Object.freeze({
   paddingLeft: 20,
@@ -29,10 +31,7 @@ class HeatmapCard extends React.Component {
   render() {
     const contentCreator = (heatmapData) => {
       if (Object.keys(heatmapData).length === 0 && heatmapData.constructor === Object) {
-        return <LinearProgress
-          mode='indeterminate'
-          style={{position: 'relative'}}
-        />
+        return <LinearProgress mode='indeterminate' />
       } else {
         const data = transform(heatmapData);
         return <Heatmap data={data} />;
@@ -43,15 +42,18 @@ class HeatmapCard extends React.Component {
 }
 
 /**
- * Render the car with the given content.
+ * Render the card with the given content.
  * @param content
  * @returns {XML}
  */
 const cardRender = (content) => {
   return <div style={STYLE}>
-    <Paper style={{padding: 20, height: '800px'}}>
-      <div style={{whitespace: 'nowrap'}}>
-        {content}
+    <Paper >
+      <div style={{paddingLeft: 20, paddingRight: 20, paddingBottom: 20, height: '800px'}}>
+        <HeatmapConfiguration/>
+        <div style={{whitespace: 'nowrap', marginTop: '45px'}}>
+          {content}
+        </div>
       </div>
     </Paper>
   </div>;

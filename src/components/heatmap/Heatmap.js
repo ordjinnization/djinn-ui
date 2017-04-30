@@ -57,7 +57,7 @@ const LAYOUT = Object.freeze({
  */
 const CONFIG = Object.freeze({
   showLink: false,
-  displayModeBar: true
+  displayModeBar: false
 });
 
 /**
@@ -70,10 +70,9 @@ export const Heatmap = ({data}) => {
   data.type = 'heatmap';
   data.hoverinfo = 'text';
   data.colorscale = COLOURSCALE_VALUE;
-  console.log(data);
   return (
     <PlotlyComponent className='project-stage-heatmap' data={[data]} layout={LAYOUT}
-                     config={CONFIG} />
+                     config={CONFIG} style={{zIndex: -1}} />
   );
 };
 
