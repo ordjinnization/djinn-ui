@@ -12,7 +12,8 @@ import {connect} from 'react-redux';
 import {requestHeatmap} from '../../actions/index';
 import transform from './transform';
 import HeatmapConfiguration from './HeatmapConfiguration';
-
+import ModeEdit from 'material-ui/svg-icons/editor/mode-edit';
+import IconButton from 'material-ui/IconButton';
 
 const STYLE = Object.freeze({
   paddingLeft: 20,
@@ -22,10 +23,21 @@ const STYLE = Object.freeze({
 class HeatmapCard extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {isOpen: false};
+    this.openEdit = this.openEdit.bind(this);
+    this.handleClose = this.handleClose.bind(this);
   }
 
   componentWillMount() {
     this.props.requestHeatmap();
+  }
+
+  openEdit() {
+    this.setState({isOpen: true});
+  }
+
+  handleClose() {
+    this.setState({isOpen: false});
   }
 
   render() {
@@ -37,7 +49,18 @@ class HeatmapCard extends React.Component {
         return <Heatmap data={data} />;
       }
     };
-    return cardRender(contentCreator(this.props.heatmapData));
+    return (
+      <div style={STYLE}>
+        <Paper>
+          <div style={{paddingLeft: 20, paddingRight: 20, paddingBottom: 20, height: '800px'}}>
+            <HeatmapConfiguration onRequestClose={this.handleClose} open={this.state.isOpen}/>
+            <IconButton style={{float: 'right'}} onTouchTap={this.openEdit}>
+              <ModeEdit />
+            </IconButton>
+            {contentRender(contentCreator(this.props.heatmapData))}
+          </div>
+        </Paper>
+      </div>);
   }
 }
 
@@ -46,17 +69,10 @@ class HeatmapCard extends React.Component {
  * @param content
  * @returns {XML}
  */
-const cardRender = (content) => {
-  return <div style={STYLE}>
-    <Paper >
-      <div style={{paddingLeft: 20, paddingRight: 20, paddingBottom: 20, height: '800px'}}>
-        <HeatmapConfiguration/>
-        <div style={{whitespace: 'nowrap', marginTop: '45px'}}>
+const contentRender = (content) => {
+  return <div style={{whitespace: 'nowrap', marginTop: '45px'}}>
           {content}
-        </div>
-      </div>
-    </Paper>
-  </div>;
+        </div>;
 };
 
 const mapStateToProps = (state) => {

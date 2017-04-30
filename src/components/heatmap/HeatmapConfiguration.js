@@ -16,46 +16,31 @@ import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import TextField from 'material-ui/TextField';
 
-class HeatmapConfiguration extends React.Component {
-  constructor(props, context) {
-    super(props, context);
-    this.state = {isOpen: false};
-    this.openEdit = this.openEdit.bind(this);
-    this.handleClose = this.handleClose.bind(this);
-  }
 
-  openEdit() {
-    this.setState({isOpen: true});
-  }
+const HeatmapConfiguration = ({open, onRequestClose}) => {
 
-  handleClose() {
-    console.log("Close")
-    this.setState({isOpen: false});
-  }
-
-  render() {
     const actions = [
       <FlatButton
         label="Cancel"
         primary={true}
-        onTouchTap={this.handleClose}
+        onTouchTap={onRequestClose}
       />,
       <FlatButton
         label="Update"
         primary={true}
-        onTouchTap={this.handleClose}
+        onTouchTap={onRequestClose}
       />,
     ];
     return (<div>
-      <Dialog ref='editDialog' title="Heatmap Configuration"
+      <Dialog title="Heatmap Configuration"
               actions={actions}
               modal={false}
-              open={this.state.isOpen}
-              onRequestClose={this.handleClose}>
+              open={open}
+              onRequestClose={onRequestClose}>
         <div style={{display: 'inline-block', paddingTop: 20}}>
           <span style={{float: 'left'}}>Display data from</span>
           <div style={{float: 'left'}}>
-            <DropDownMenu id='dp' value={1} onChange={this.handleChange}
+            <DropDownMenu id='dp' value={1} onChange={null}
                           style={{marginTop: -20, marginLeft: -10}} listStyle={{color: 'red'}}>
               <MenuItem value={1} primaryText="All Projects" />
               <MenuItem primaryText="GSTC" />
@@ -70,15 +55,14 @@ class HeatmapConfiguration extends React.Component {
           </span>
         </div>
       </Dialog>
-      <IconButton style={{float: 'right'}} onTouchTap={this.openEdit}>
-        <ModeEdit />
-      </IconButton>
+
     </div>);
-  }
-}
+
+};
 
 HeatmapConfiguration.propTypes = {
-  // prop: PropTypes.string.isRequired
+  onRequestClose: PropTypes.func.isRequired,
+  open: PropTypes.bool.isRequired
 };
 
 export default HeatmapConfiguration;
