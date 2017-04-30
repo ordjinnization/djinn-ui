@@ -9,6 +9,8 @@ import HeatmapCard from './HeatmapCard';
 import {expect} from 'chai';
 import configureStore from 'redux-mock-store';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import injectTapEventPlugin from 'react-tap-event-plugin';
+injectTapEventPlugin();
 
 const middleware = [];
 const mockStore = configureStore(middleware);

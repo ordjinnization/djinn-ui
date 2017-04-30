@@ -23,7 +23,7 @@ const STYLE = Object.freeze({
 class HeatmapCard extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {isOpen: false};
+    this.state = {isConfigOpen: false};
     this.openEdit = this.openEdit.bind(this);
     this.handleClose = this.handleClose.bind(this);
   }
@@ -33,11 +33,11 @@ class HeatmapCard extends React.Component {
   }
 
   openEdit() {
-    this.setState({isOpen: true});
+    this.setState({isConfigOpen: true});
   }
 
   handleClose() {
-    this.setState({isOpen: false});
+    this.setState({isConfigOpen: false});
   }
 
   render() {
@@ -53,7 +53,7 @@ class HeatmapCard extends React.Component {
       <div style={STYLE}>
         <Paper>
           <div style={{paddingLeft: 20, paddingRight: 20, paddingBottom: 20, height: '800px'}}>
-            <HeatmapConfiguration onRequestClose={this.handleClose} open={this.state.isOpen}/>
+            <HeatmapConfiguration onRequestClose={this.handleClose} open={this.state.isConfigOpen} />
             <IconButton style={{float: 'right'}} onTouchTap={this.openEdit}>
               <ModeEdit />
             </IconButton>
@@ -71,8 +71,8 @@ class HeatmapCard extends React.Component {
  */
 const contentRender = (content) => {
   return <div style={{whitespace: 'nowrap', marginTop: '45px'}}>
-          {content}
-        </div>;
+    {content}
+  </div>;
 };
 
 const mapStateToProps = (state) => {
