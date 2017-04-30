@@ -20,6 +20,7 @@
   "author": "Stephen O'Brien",
   "license": "MIT",
   "dependencies": {
+    "axios": "^0.16.1",
     "babel-polyfill": "6.20.0",
     "bootstrap": "3.3.7",
     "history": "^4.6.1",
