@@ -9,8 +9,6 @@ import HeatmapCard from './HeatmapCard';
 import {expect} from 'chai';
 import configureStore from 'redux-mock-store';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import injectTapEventPlugin from 'react-tap-event-plugin';
-injectTapEventPlugin();
 
 const middleware = [];
 const mockStore = configureStore(middleware);
@@ -33,8 +31,9 @@ const init = (data) => {
 
 describe('Heatmap Card initialization', () => {
   it('should send a request for heatmap data', () => {
-    const store = mockStore({heatmap: {}});
+    const store = mockStore({heatmap: {}, projects: []});
     mount(<MuiThemeProvider><HeatmapCard store={store} /></MuiThemeProvider>);
-    expect(store.getActions()).to.deep.equal([{type: 'REQUEST_HEATMAP'}])
+    expect(store.getActions()).to.contain({type: 'REQUEST_HEATMAP'});
+    expect(store.getActions()).to.contain({type: 'REQUEST_PROJECTS'});
   });
 });

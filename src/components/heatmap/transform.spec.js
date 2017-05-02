@@ -3,7 +3,7 @@
  */
 'use strict';
 import {expect} from 'chai';
-import transform from './transform'
+import {transformHeatmapData} from './transform'
 
 const CUSTOM_DATA = Object.freeze({
   z: [[0, 10], [3, 4]],
@@ -14,9 +14,9 @@ const CUSTOM_DATA = Object.freeze({
   colorscale: []
 });
 
-describe('data transform', () => {
+describe('data transformHeatmapData', () => {
   it('should remove null values from data', () => {
-    const data = transform(CUSTOM_DATA);
+    const data = transformHeatmapData(CUSTOM_DATA);
     expect(data.x[1]).to.be.equal('Unknown');
   });
 
@@ -28,6 +28,6 @@ describe('data transform', () => {
       "Stage: Build Artifact<br>Application: Titan<br>Failures: 3",
       "Stage: Unknown<br>Application: Titan<br>Failures: 4"
     ]];
-    expect(transform(CUSTOM_DATA).text).to.deep.equal(expected);
+    expect(transformHeatmapData(CUSTOM_DATA).text).to.deep.equal(expected);
   });
 });

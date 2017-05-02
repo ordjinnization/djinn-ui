@@ -19,12 +19,12 @@ const cleanData = (data) => {
 };
 
 /**
- * Given heatmap data transform it by updating null values to the
+ * Given heatmap data transformHeatmapData it by updating null values to the
  * string 'Unknown' and adding a text property.
- * @param heatmapData the data to transform.
+ * @param heatmapData the data to transformHeatmapData.
  * @returns {Object}
  */
-const transform = (heatmapData) => {
+export const transformHeatmapData = (heatmapData) => {
   const data = cleanData(Object.assign({}, heatmapData));
 
   let x = data.x;
@@ -38,4 +38,3 @@ const transform = (heatmapData) => {
   return data;
 };
 
-export default transform;

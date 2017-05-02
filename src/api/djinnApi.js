@@ -12,3 +12,9 @@ export function fetchHeatmap() {
     return data
   });
 }
+
+export function fetchProjects() {
+  return djinn.get('/projects/').then(({data}) => {
+    return data
+  });
+}
