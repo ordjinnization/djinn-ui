@@ -34,7 +34,7 @@ const paperChildStyle = {
   paddingTop: 20
 };
 
-const HeatmapCard = ({heatmapData, projects, selectedProject, onChangeOfProject, onChangeOfDays}) => {
+const HeatmapCard = ({heatmapData, projects, selectedProject, onChangeOfProject, onChangeOfDays, onReloadConfig}) => {
   return (
     <div style={paperParentStyle}>
       <Paper style={paperStyle}>
@@ -46,7 +46,7 @@ const HeatmapCard = ({heatmapData, projects, selectedProject, onChangeOfProject,
           <span style={{float: 'left', marginTop: -15, marginLeft: -10}}>
               since {daysTextField(onChangeOfDays)} weeks ago.
            </span>
-          <IconButton style={{float: 'left', marginTop: -15}}>
+          <IconButton style={{float: 'left', marginTop: -15}} onTouchTap={onReloadConfig}>
             <Replay />
           </IconButton>
         </div>
@@ -71,6 +71,19 @@ const projectsDropDown = (id, projects, selectedProject, onChangeOfProject) => {
 };
 
 /**
+ * Given a list of projects, build a list of MenuItems.
+ * @param projects the list of projects.
+ * @return a list of MenuItems.
+ */
+const buildProjectMenuList = (projects) => {
+  let menuList = projects.map((project) =>
+    <MenuItem key={project.replace(/\s/g, '')} value={project} primaryText={project} />
+  );
+  menuList.unshift(<MenuItem key='allProjects' value='allProjects' primaryText='All Projects' />)
+  return menuList;
+};
+
+/**
  * Render a text field for entering days from 0 to 99.
  * @param onChangeOfDays a function to run when days are entered.
  * @returns {XML}
@@ -80,7 +93,8 @@ const daysTextField = (onChangeOfDays) => {
                     style={{width: 20}}
                     hintText={"∞"}
                     hintStyle={{fontSize: 25}}
-                    onChange={onChangeOfDays} />
+                    onChange={onChangeOfDays}
+                    disabled={true} />
 };
 
 /**
@@ -96,17 +110,6 @@ const loadingOrHeatmap = (heatmapData) => {
     const data = transformHeatmapData(heatmapData);
     return <Heatmap data={data} />;
   }
-};
-
-/**
- * Given a list of projects, build a list of MenuItems.
- * @param projects the list of projects.
- * @return a list of MenuItems.
- */
-const buildProjectMenuList = (projects) => {
-  return projects.map((project) =>
-    <MenuItem key={project} value={project} primaryText={project} />
-  );
 };
 
 export default HeatmapCard;

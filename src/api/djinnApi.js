@@ -13,6 +13,14 @@ export function fetchHeatmap() {
   });
 }
 
+export function fetchHeatmapForProject(project) {
+  console.log(project)
+  console.log("test")
+  return djinn.get(`/heatmap/${project}/`).then(({data}) => {
+    return data
+  });
+}
+
 export function fetchProjects() {
   return djinn.get('/projects/').then(({data}) => {
     return data
