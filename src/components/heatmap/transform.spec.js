@@ -3,7 +3,7 @@
  */
 'use strict';
 import {expect} from 'chai';
-import {transformHeatmapData} from './transform'
+import {transformHeatmapData} from './transform';
 
 const CUSTOM_DATA = Object.freeze({
   z: [[0, 10], [3, 4]],

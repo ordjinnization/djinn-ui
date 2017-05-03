@@ -5,7 +5,6 @@
 import {REQUEST_HEATMAP_SUCCESS, REQUEST_PROJECTS_SUCCESS, REQUEST_HEATMAP_FOR_PROJECT_SUCCESS} from '../actions/constants';
 
 export const heatmap = (state = {}, action) => {
-  console.log(action.type)
   switch (action.type) {
     case REQUEST_HEATMAP_SUCCESS:
       return action.heatmapData;

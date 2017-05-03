@@ -44,7 +44,7 @@ export const requestHeatMapForProjectSuccess = (heatmapData) => {
   return {
     type: REQUEST_HEATMAP_FOR_PROJECT_SUCCESS,
     heatmapData
-  }
+  };
 };
 
 export const requestProjects = () => {

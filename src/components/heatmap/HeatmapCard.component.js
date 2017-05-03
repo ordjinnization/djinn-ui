@@ -35,8 +35,7 @@ const paperChildStyle = {
 };
 
 const HeatmapCard = (props) => {
-  return (
-    <div style={paperParentStyle}>
+  return (<div style={paperParentStyle}>
       <Paper style={paperStyle}>
         <div style={paperChildStyle}>
           <span style={{float: 'left'}}>Display data from</span>
@@ -66,10 +65,10 @@ const HeatmapCard = (props) => {
  * @returns {XML}
  */
 const projectsDropDown = (id, projects, selectedProject, onChangeOfProject, allProjectsKey) => {
-  return <DropDownMenu id value={selectedProject} onChange={onChangeOfProject}
+  return (<DropDownMenu id value={selectedProject} onChange={onChangeOfProject}
                        style={{marginTop: -20, marginLeft: -10}}>
     {buildProjectMenuList(projects, allProjectsKey)}
-  </DropDownMenu>
+  </DropDownMenu>);
 };
 
 /**
@@ -82,7 +81,7 @@ const buildProjectMenuList = (projects, allProjectsKey) => {
   let menuList = projects.map((project) =>
     <MenuItem key={project.replace(/\s/g, '')} value={project} primaryText={project} />
   );
-  menuList.unshift(<MenuItem key={allProjectsKey} value={allProjectsKey} primaryText='All Projects' />)
+  menuList.unshift(<MenuItem key={allProjectsKey} value={allProjectsKey} primaryText='All Projects' />);
   return menuList;
 };
 
@@ -92,12 +91,12 @@ const buildProjectMenuList = (projects, allProjectsKey) => {
  * @returns {XML}
  */
 const daysTextField = (onChangeOfDays) => {
-  return <TextField maxLength={2}
+  return (<TextField maxLength={2}
                     style={{width: 20}}
                     hintText={"∞"}
                     hintStyle={{fontSize: 25}}
                     onChange={onChangeOfDays}
-                    disabled={true} />
+                    disabled />);
 };
 
 /**
@@ -108,7 +107,7 @@ const daysTextField = (onChangeOfDays) => {
  */
 const loadingOrHeatmap = (heatmapData) => {
   if (Object.keys(heatmapData).length === 0 && heatmapData.constructor === Object) {
-    return <LinearProgress mode='indeterminate' />
+    return <LinearProgress mode='indeterminate' />;
   } else {
     const data = transformHeatmapData(heatmapData);
     return <Heatmap data={data} />;
@@ -117,11 +116,12 @@ const loadingOrHeatmap = (heatmapData) => {
 
 HeatmapCard.propTypes = {
   heatmapData: PropTypes.object.isRequired,
-  projects:PropTypes.array.isRequired,
+  projects: PropTypes.array.isRequired,
   selectedProject: PropTypes.string.isRequired,
   onChangeOfProject: PropTypes.func.isRequired,
   onChangeOfDays: PropTypes.func.isRequired,
   onReloadConfig: PropTypes.func.isRequired,
   allProjectsKey: PropTypes.string.isRequired
 };
+
 export default HeatmapCard;

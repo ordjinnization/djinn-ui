@@ -17,7 +17,7 @@ export default function* rootSaga () {
 }
 
 export function* watchfetchHeatmap() {
-  yield takeEvery(REQUEST_HEATMAP, fetchHeatmapSaga)
+  yield takeEvery(REQUEST_HEATMAP, fetchHeatmapSaga);
 }
 
 export function* fetchHeatmapSaga() {
@@ -26,7 +26,7 @@ export function* fetchHeatmapSaga() {
 }
 
 export function* watchfetchHeatmapForProjectSaga() {
-  yield takeEvery(REQUEST_HEATMAP_FOR_PROJECT, fetchHeatmapForProjectSaga)
+  yield takeEvery(REQUEST_HEATMAP_FOR_PROJECT, fetchHeatmapForProjectSaga);
 }
 
 export function* fetchHeatmapForProjectSaga({project}) {

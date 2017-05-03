@@ -40,16 +40,24 @@ class HeatmapCardContainer extends React.Component {
   }
 
   render() {
-    return <HeatmapCard
+    return (<HeatmapCard
       heatmapData={this.props.heatmapData}
       projects={this.props.projects}
       selectedProject={this.state.selectedProject}
       onChangeOfProject={this.onChangeOfProject}
       onChangeOfDays={this.onChangeOfDays}
       onReloadConfig={this.onReloadConfig}
-      allProjectsKey={allProjectsKey} />
+      allProjectsKey={allProjectsKey} />);
   }
 }
+
+HeatmapCardContainer.propTypes = {
+  heatmapData: PropTypes.object.isRequired,
+  projects: PropTypes.array.isRequired,
+  requestHeatmap: PropTypes.func.isRequired,
+  requestHeatmapForProject: PropTypes.func.isRequired,
+  requestProjects: PropTypes.func.isRequired
+};
 
 const mapStateToProps = (state) => {
   return {
