@@ -9,7 +9,6 @@ import Paper from 'material-ui/Paper';
 import LinearProgress from 'material-ui/LinearProgress';
 import Heatmap from '../heatmap/Heatmap';
 import {connect} from 'react-redux';
-import {requestHeatmap, requestProjects} from '../../actions/index';
 import {transformHeatmapData} from './transform';
 import {RadioButton, RadioButtonGroup} from 'material-ui/RadioButton';
 import DropDownMenu from 'material-ui/DropDownMenu';
@@ -18,10 +17,10 @@ import TextField from 'material-ui/TextField';
 import IconButton from 'material-ui/IconButton';
 import Replay from 'material-ui/svg-icons/av/replay';
 
-const paperParentStyle = Object.freeze({
+const paperParentStyle = {
   paddingLeft: 20,
   paddingRight: 20
-});
+};
 
 const paperStyle = {
   paddingLeft: 20,
@@ -35,61 +34,37 @@ const paperChildStyle = {
   paddingTop: 20
 };
 
-
-const allProjectsKey = 'allProjects';
-
-class HeatmapCard extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {selectedProject: allProjectsKey, numberOfDays: 0};
-    this.onChangeOfProject = this.onChangeOfProject.bind(this);
-    this.onChangeOfDays = this.onChangeOfDays.bind(this);
-  }
-
-  componentWillMount() {
-    this.props.requestHeatmap();
-    this.props.requestProjects();
-  }
-
-  onChangeOfProject(event, key, value) {
-    this.setState({selectedProject: value});
-  }
-
-  onChangeOfDays(event, value) {
-    this.setState({numberOfDays: value});
-  }
-
-  render() {
-    return (
-      <div style={paperParentStyle}>
-        <Paper style={paperStyle}>
-          <div style={paperChildStyle}>
-            <span style={{float: 'left'}}>Display data from</span>
-            <div style={{float: 'left'}}>
-              {projectsDropDown(this.props.projects, this.state.selectedProject, this.onChangeOfProject)}
-            </div>
-            <span style={{float: 'left', marginTop: -15, marginLeft: -10}}>
-                since {daysTextField(this.onChangeOfDays)} weeks ago.
-             </span>
-            <IconButton style={{float: 'left', marginTop: -15}}>
-              <Replay />
-            </IconButton>
+const HeatmapCard = ({heatmapData, projects, selectedProject, onChangeOfProject, onChangeOfDays}) => {
+  return (
+    <div style={paperParentStyle}>
+      <Paper style={paperStyle}>
+        <div style={paperChildStyle}>
+          <span style={{float: 'left'}}>Display data from</span>
+          <div style={{float: 'left'}}>
+            {projectsDropDown("projects-selector", projects, selectedProject, onChangeOfProject)}
           </div>
-          {loadingOrHeatmap(this.props.heatmapData)}
-        </Paper>
-      </div>);
-  }
-}
+          <span style={{float: 'left', marginTop: -15, marginLeft: -10}}>
+              since {daysTextField(onChangeOfDays)} weeks ago.
+           </span>
+          <IconButton style={{float: 'left', marginTop: -15}}>
+            <Replay />
+          </IconButton>
+        </div>
+        {loadingOrHeatmap(heatmapData)}
+      </Paper>
+    </div>);
+};
 
 /**
  * Render the projects dropdown.
+ * @param id
  * @param projects the projects to render in the dropdown.
  * @param selectedProject
  * @param onChangeOfProject function to run when a project gets selected.
  * @returns {XML}
  */
-const projectsDropDown = (projects, selectedProject, onChangeOfProject) => {
-  return <DropDownMenu id='projects-selector' value={selectedProject} onChange={onChangeOfProject}
+const projectsDropDown = (id, projects, selectedProject, onChangeOfProject) => {
+  return <DropDownMenu id value={selectedProject} onChange={onChangeOfProject}
                        style={{marginTop: -20, marginLeft: -10}}>
     {buildProjectMenuList(projects)}
   </DropDownMenu>
@@ -129,26 +104,9 @@ const loadingOrHeatmap = (heatmapData) => {
  * @return a list of MenuItems.
  */
 const buildProjectMenuList = (projects) => {
-  const initial = (<MenuItem key={allProjectsKey} value={allProjectsKey} primaryText='All Projects' />);
-  const projectsItems = projects.map((project) =>
+  return projects.map((project) =>
     <MenuItem key={project} value={project} primaryText={project} />
   );
-  projectsItems.unshift(initial);
-  return projectsItems;
 };
 
-const mapStateToProps = (state) => {
-  return {
-    heatmapData: state.heatmap,
-    projects: state.projects
-  };
-};
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    requestHeatmap: () => dispatch(requestHeatmap()),
-    requestProjects: () => dispatch(requestProjects())
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(HeatmapCard);
+export default HeatmapCard;

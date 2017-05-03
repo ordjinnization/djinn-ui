@@ -64,7 +64,6 @@ const CONFIG = Object.freeze({
  * Renders a heatmap of the given data. The data must to be in a form
  * plotly.js expects.
  * @param data the data to render.
- * @param style style to use.
  * @returns {XML} a component that renders the heatmap as a plotly heatmap.
  */
 export const Heatmap = ({data}) => {
