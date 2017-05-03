@@ -34,23 +34,24 @@ const paperChildStyle = {
   paddingTop: 20
 };
 
-const HeatmapCard = ({heatmapData, projects, selectedProject, onChangeOfProject, onChangeOfDays, onReloadConfig}) => {
+const HeatmapCard = (props) => {
   return (
     <div style={paperParentStyle}>
       <Paper style={paperStyle}>
         <div style={paperChildStyle}>
           <span style={{float: 'left'}}>Display data from</span>
           <div style={{float: 'left'}}>
-            {projectsDropDown("projects-selector", projects, selectedProject, onChangeOfProject)}
+            {projectsDropDown("projects-selector", props.projects,
+              props.selectedProject, props.onChangeOfProject, props.allProjectsKey)}
           </div>
           <span style={{float: 'left', marginTop: -15, marginLeft: -10}}>
-              since {daysTextField(onChangeOfDays)} weeks ago.
+              since {daysTextField(props.onChangeOfDays)} weeks ago.
            </span>
-          <IconButton style={{float: 'left', marginTop: -15}} onTouchTap={onReloadConfig}>
+          <IconButton style={{float: 'left', marginTop: -15}} onTouchTap={props.onReloadConfig}>
             <Replay />
           </IconButton>
         </div>
-        {loadingOrHeatmap(heatmapData)}
+        {loadingOrHeatmap(props.heatmapData)}
       </Paper>
     </div>);
 };
@@ -61,25 +62,27 @@ const HeatmapCard = ({heatmapData, projects, selectedProject, onChangeOfProject,
  * @param projects the projects to render in the dropdown.
  * @param selectedProject
  * @param onChangeOfProject function to run when a project gets selected.
+ * @param allProjectsKey
  * @returns {XML}
  */
-const projectsDropDown = (id, projects, selectedProject, onChangeOfProject) => {
+const projectsDropDown = (id, projects, selectedProject, onChangeOfProject, allProjectsKey) => {
   return <DropDownMenu id value={selectedProject} onChange={onChangeOfProject}
                        style={{marginTop: -20, marginLeft: -10}}>
-    {buildProjectMenuList(projects)}
+    {buildProjectMenuList(projects, allProjectsKey)}
   </DropDownMenu>
 };
 
 /**
  * Given a list of projects, build a list of MenuItems.
  * @param projects the list of projects.
+ * @param allProjectsKey
  * @return a list of MenuItems.
  */
-const buildProjectMenuList = (projects) => {
+const buildProjectMenuList = (projects, allProjectsKey) => {
   let menuList = projects.map((project) =>
     <MenuItem key={project.replace(/\s/g, '')} value={project} primaryText={project} />
   );
-  menuList.unshift(<MenuItem key='allProjects' value='allProjects' primaryText='All Projects' />)
+  menuList.unshift(<MenuItem key={allProjectsKey} value={allProjectsKey} primaryText='All Projects' />)
   return menuList;
 };
 
@@ -112,4 +115,13 @@ const loadingOrHeatmap = (heatmapData) => {
   }
 };
 
+HeatmapCard.propTypes = {
+  heatmapData: PropTypes.object.isRequired,
+  projects:PropTypes.array.isRequired,
+  selectedProject: PropTypes.string.isRequired,
+  onChangeOfProject: PropTypes.func.isRequired,
+  onChangeOfDays: PropTypes.func.isRequired,
+  onReloadConfig: PropTypes.func.isRequired,
+  allProjectsKey: PropTypes.string.isRequired
+};
 export default HeatmapCard;

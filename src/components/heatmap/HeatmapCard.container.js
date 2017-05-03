@@ -32,8 +32,7 @@ class HeatmapCardContainer extends React.Component {
   }
 
   onReloadConfig() {
-    console.log(this.state.selectedProject)
-    if(this.state.selectedProject !== allProjectsKey) {
+    if (this.state.selectedProject !== allProjectsKey) {
       this.props.requestHeatmapForProject(this.state.selectedProject);
     } else {
       this.props.requestHeatmap();
@@ -47,7 +46,8 @@ class HeatmapCardContainer extends React.Component {
       selectedProject={this.state.selectedProject}
       onChangeOfProject={this.onChangeOfProject}
       onChangeOfDays={this.onChangeOfDays}
-      onReloadConfig={this.onReloadConfig} />
+      onReloadConfig={this.onReloadConfig}
+      allProjectsKey={allProjectsKey} />
   }
 }
 
