@@ -15,7 +15,6 @@ class HeatmapCardContainer extends React.Component {
     this.state = {selectedProject: allProjectsKey, numberOfDays: 0};
     this.onChangeOfProject = this.onChangeOfProject.bind(this);
     this.onChangeOfDays = this.onChangeOfDays.bind(this);
-    this.onReloadConfig = this.onReloadConfig.bind(this);
   }
 
   componentWillMount() {
@@ -24,19 +23,16 @@ class HeatmapCardContainer extends React.Component {
   }
 
   onChangeOfProject(event, key, value) {
+    if (value !== allProjectsKey) {
+      this.props.requestHeatmapForProject(value);
+    } else {
+      this.props.requestHeatmap();
+    }
     this.setState({selectedProject: value});
   }
 
   onChangeOfDays(event, value) {
     this.setState({numberOfDays: value});
-  }
-
-  onReloadConfig() {
-    if (this.state.selectedProject !== allProjectsKey) {
-      this.props.requestHeatmapForProject(this.state.selectedProject);
-    } else {
-      this.props.requestHeatmap();
-    }
   }
 
   render() {
@@ -46,7 +42,6 @@ class HeatmapCardContainer extends React.Component {
       selectedProject={this.state.selectedProject}
       onChangeOfProject={this.onChangeOfProject}
       onChangeOfDays={this.onChangeOfDays}
-      onReloadConfig={this.onReloadConfig}
       allProjectsKey={allProjectsKey} />);
   }
 }

@@ -46,9 +46,6 @@ const HeatmapCard = (props) => {
           <span style={{float: 'left', marginTop: -15, marginLeft: -10}}>
               since {daysTextField(props.onChangeOfDays)} weeks ago.
            </span>
-          <IconButton style={{float: 'left', marginTop: -15}} onTouchTap={props.onReloadConfig}>
-            <Replay />
-          </IconButton>
         </div>
         {loadingOrHeatmap(props.heatmapData)}
       </Paper>
@@ -120,7 +117,6 @@ HeatmapCard.propTypes = {
   selectedProject: PropTypes.string.isRequired,
   onChangeOfProject: PropTypes.func.isRequired,
   onChangeOfDays: PropTypes.func.isRequired,
-  onReloadConfig: PropTypes.func.isRequired,
   allProjectsKey: PropTypes.string.isRequired
 };
 
