@@ -18,15 +18,16 @@ import './styles/materialIcons.css';
 import './styles/styles.css';
 import '../node_modules/react-grid-layout/css/styles.css';
 import '../node_modules/react-resizable/css/styles.css';
-import heatmap from './reducers/index';
+import {heatmap, projects} from './reducers/index';
 import routes from './routes';
 import {composeWithDevTools} from 'redux-devtools-extension';
-import {fetchHeatmapSaga} from './sagas/index';
+import rootSaga from './sagas/index';
 
 const sagaMiddleware = createSagaMiddleware();
 const store = createStore(
   combineReducers({
     heatmap,
+    projects,
     routing: routerReducer
   }),
   composeWithDevTools(applyMiddleware(sagaMiddleware))
@@ -37,7 +38,7 @@ const history = syncHistoryWithStore(browserHistory, store);
 // Needed for onTouchTap
 // http://stackoverflow.com/a/34015469/988941
 injectTapEventPlugin();
-sagaMiddleware.run(fetchHeatmapSaga);
+sagaMiddleware.run(rootSaga);
 render(
   <Provider store={store}>
     <MuiThemeProvider>
