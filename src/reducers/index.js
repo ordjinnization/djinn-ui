@@ -3,7 +3,7 @@
  */
 'use strict';
 
-import {heatmap, projects} from '../components/heatmap/reducers';
+import {heatmap, projects} from '../components/card/reducers';
 import {routerReducer} from 'react-router-redux';
 import {combineReducers} from 'redux';
 

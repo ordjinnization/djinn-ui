@@ -3,7 +3,7 @@
  */
 'use strict';
 import {fork} from 'redux-saga/effects';
-import {fetchProjectsSaga, watchfetchHeatmap, watchfetchHeatmapForProjectSaga} from '../components/heatmap/sagas/index';
+import {fetchProjectsSaga, watchfetchHeatmap, watchfetchHeatmapForProjectSaga} from '../components/card/sagas/index';
 
 export default function* rootSaga() {
   yield [
