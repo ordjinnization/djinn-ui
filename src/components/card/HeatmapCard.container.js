@@ -3,9 +3,9 @@
  */
 'use strict';
 import React, {PropTypes} from 'react';
-import HeatmapCard from './HeatmapCard.component';
 import {connect} from 'react-redux';
 import {requestHeatmap, requestHeatmapForProject, requestProjects} from '../../actions/index';
+import HeatmapCard from './HeatmapCard.component';
 
 const allProjectsKey = 'allProjects';
 
@@ -23,12 +23,12 @@ class HeatmapCardContainer extends React.Component {
   }
 
   onChangeOfProject(event, key, value) {
+    this.setState({selectedProject: value});
     if (value !== allProjectsKey) {
       this.props.requestHeatmapForProject(value);
     } else {
       this.props.requestHeatmap();
     }
-    this.setState({selectedProject: value});
   }
 
   onChangeOfDays(event, value) {
