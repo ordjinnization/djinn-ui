@@ -1,9 +1,9 @@
 'use strict';
 import expect from 'expect';
-import {fetchHeatmapSaga} from './index';
 import {call, put} from 'redux-saga/effects';
-import {fetchHeatmap} from '../api/djinnApi';
-import {requestHeatmapSuccess} from '../actions/index';
+import {requestHeatmapSuccess} from '../../../actions';
+import {fetchHeatmap} from '../../../api/djinnApi';
+import {fetchHeatmapSaga} from './';
 
 describe('heatmap', () => {
   let gen;
@@ -18,8 +18,8 @@ describe('heatmap', () => {
 
   it('should put expected data into the store', () => {
     gen.next();
-    const expected = put(requestHeatmapSuccess({test:'test'}));
-    const result = gen.next({test:'test'}).value;
+    const expected = put(requestHeatmapSuccess({test: 'test'}));
+    const result = gen.next({test: 'test'}).value;
     expect(result).toEqual(expected);
   });
 });

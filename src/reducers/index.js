@@ -2,24 +2,17 @@
  *
  */
 'use strict';
-import {REQUEST_HEATMAP_SUCCESS, REQUEST_PROJECTS_SUCCESS, REQUEST_HEATMAP_FOR_PROJECT_SUCCESS} from '../actions/constants';
 
-export const heatmap = (state = {}, action) => {
-  switch (action.type) {
-    case REQUEST_HEATMAP_SUCCESS:
-      return action.heatmapData;
-    case REQUEST_HEATMAP_FOR_PROJECT_SUCCESS:
-      return action.heatmapData;
-    default:
-      return state;
-  }
+import {heatmap, projects} from '../components/heatmap/reducers';
+import {routerReducer} from 'react-router-redux';
+import {combineReducers} from 'redux';
+
+const rootReducer = () => {
+  return combineReducers({
+    heatmap,
+    projects,
+    routing: routerReducer
+  });
 };
 
-export const projects = (state = [], action) => {
-  switch(action.type) {
-    case REQUEST_PROJECTS_SUCCESS:
-      return action.projects.projects;
-    default:
-      return state;
-  }
-};
+export default rootReducer;

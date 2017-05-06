@@ -4,32 +4,28 @@
 'use strict';
 
 import 'babel-polyfill';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import React from 'react';
 import {render} from 'react-dom';
 import {Provider} from 'react-redux';
 import {browserHistory, IndexRoute, Route, Router} from 'react-router';
-import {push, routerMiddleware, routerReducer, syncHistoryWithStore} from 'react-router-redux';
-import '../node_modules/toastr/build/toastr.min.css';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import {applyMiddleware, combineReducers, createStore} from 'redux';
-import createSagaMiddleware from 'redux-saga';
+import {push, routerMiddleware, syncHistoryWithStore} from 'react-router-redux';
 import injectTapEventPlugin from 'react-tap-event-plugin';
-import './styles/materialIcons.css';
-import './styles/styles.css';
+import {applyMiddleware, combineReducers, createStore} from 'redux';
+import {composeWithDevTools} from 'redux-devtools-extension';
+import createSagaMiddleware from 'redux-saga';
 import '../node_modules/react-grid-layout/css/styles.css';
 import '../node_modules/react-resizable/css/styles.css';
-import {heatmap, projects} from './reducers/index';
+import '../node_modules/toastr/build/toastr.min.css';
+import rootReducer from './reducers';
 import routes from './routes';
-import {composeWithDevTools} from 'redux-devtools-extension';
-import rootSaga from './sagas/index';
+import rootSaga from './sagas';
+import './styles/materialIcons.css';
+import './styles/styles.css';
 
 const sagaMiddleware = createSagaMiddleware();
 const store = createStore(
-  combineReducers({
-    heatmap,
-    projects,
-    routing: routerReducer
-  }),
+  rootReducer(),
   composeWithDevTools(applyMiddleware(sagaMiddleware))
 );
 
