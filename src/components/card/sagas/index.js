@@ -11,8 +11,8 @@ import {
   requestHeatmapFailure,
   requestProjectsFailure,
   requestProjectsSuccess
-} from '../../../actions';
-import {REQUEST_HEATMAP, REQUEST_HEATMAP_FOR_PROJECT} from '../../../actions/constants';
+} from '../actions';
+import {REQUEST_HEATMAP, REQUEST_HEATMAP_FOR_PROJECT} from '../actions/constants';
 import {fetchHeatmap, fetchHeatmapForProject, fetchProjects} from '../../../api/djinnApi';
 
 export function* watchfetchHeatmap() {
