@@ -3,7 +3,7 @@
  */
 'use strict';
 import {expect} from 'chai';
-import {heatmap, heatmapErrors, projects} from './';
+import {heatmap, heatmapErrors, projects, projectsErrors} from './';
 
 describe('heatmap card reducers', () => {
   describe('heatmap reducer', () => {
@@ -64,14 +64,16 @@ describe('heatmap card reducers', () => {
       };
       expect(projects(undefined, action)).to.equal(projectList.projects);
     });
+  });
 
+  describe('projects errors reducer', () => {
     it('should return an error when action type is "request.projects.success"', () => {
       const error = 'Failure!!';
       const action = {
         type: 'request.projects.failure',
         error
       };
-      expect(projects(undefined, action)).to.equal(error);
+      expect(projectsErrors(undefined, action)).to.deep.equal([error]);
     });
   });
 });
