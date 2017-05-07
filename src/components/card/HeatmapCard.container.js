@@ -43,7 +43,8 @@ class HeatmapCardContainer extends React.Component {
       onChangeOfProject={this.onChangeOfProject}
       onChangeOfDays={this.onChangeOfDays}
       allProjectsKey={allProjectsKey}
-      errors={this.props.errors} />);
+      projectsErrors={this.props.projectsErrors}
+      heatmapErrors={this.props.heatmapErrors} />);
   }
 }
 
@@ -53,14 +54,16 @@ HeatmapCardContainer.propTypes = {
   requestHeatmap: PropTypes.func,
   requestHeatmapForProject: PropTypes.func,
   requestProjects: PropTypes.func,
-  errors: PropTypes.array
+  projectsErrors: PropTypes.array,
+  heatmapErrors: PropTypes.array
 };
 
 const mapStateToProps = (state) => {
   return {
     heatmapData: state.heatmap,
     projects: state.projects,
-    errors: state.error
+    projectsErrors: state.projectsErrors,
+    heatmapErrors: state.heatmapErrors
   };
 };
 
