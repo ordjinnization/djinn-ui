@@ -35,20 +35,64 @@ const paperChildStyle = {
 const HeatmapCard = (props) => {
   return (<div style={paperParentStyle}>
     <Paper style={paperStyle}>
-      <div style={paperChildStyle}>
-        <span style={{float: 'left'}}>Display data from</span>
-        <div style={{float: 'left'}}>
-          {projectsDropDown("projects-selector", props.projects,
-            props.selectedProject, props.onChangeOfProject, props.allProjectsKey)}
-        </div>
-        <span style={{float: 'left', marginTop: -15, marginLeft: -10}}>
-              since {daysTextField(props.onChangeOfDays)} weeks ago.
-           </span>
+      <div style={paperParentStyle}>
+        {render(props)}
       </div>
-      {loadingOrHeatmap(props.heatmapData)}
     </Paper>
   </div>);
 };
+
+/**
+ * Render our content, handling errors and loading.
+ * @param props
+ * @returns {XML}
+ */
+const render = (props) => {
+  if (props.heatmapErrors.length > 0 || props.projectsErrors.length > 0) {
+    return renderErrors(props.heatmapErrors, props.projectsErrors);
+  } else {
+    return renderContent(props);
+  }
+};
+
+/**
+ * Render - just as a plain list - any errors.
+ * @param heatmapErrors
+ * @param projectErrors
+ * @returns {XML}
+ */
+const renderErrors = (heatmapErrors, projectErrors) => {
+  return (<div style={paperChildStyle}>
+    <ul>
+      {heatmapErrors.map(error => <li key={error}>{error}</li>)}
+    </ul>
+    <ul>
+      {projectErrors.map(error => <li key={error}>{error}</li>)}
+    </ul>
+  </div>);
+};
+
+/**
+ * Render our actual content.
+ * @param props
+ * @returns {XML}
+ */
+const renderContent = (props) => {
+  return (<div>
+    <div style={paperChildStyle}>
+      <span style={{float: 'left'}}>Display data from</span>
+      <div style={{float: 'left'}}>
+        {projectsDropDown("projects-selector", props.projects,
+          props.selectedProject, props.onChangeOfProject, props.allProjectsKey)}
+      </div>
+      <span style={{float: 'left', marginTop: -15, marginLeft: -10}}>
+              since {daysTextField(props.onChangeOfDays)} weeks ago.
+           </span>
+    </div>
+    {loadingOrHeatmap(props.heatmapData)}
+  </div>);
+};
+
 
 /**
  * Render the projects dropdown.
