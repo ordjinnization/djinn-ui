@@ -31,4 +31,13 @@ describe('heatmap card reducer', () => {
     };
     expect(heatmap(undefined, action)).to.equal(heatmapData);
   });
+
+  it('should return error for "request.heatmap.project.failure"', () => {
+    const error = "Failure!!";
+    const action = {
+      type: 'request.heatmap.project.failure',
+      error
+    };
+    expect(heatmap(undefined, action)).to.equal(error);
+  });
 });

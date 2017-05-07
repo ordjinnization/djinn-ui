@@ -4,6 +4,7 @@
 'use strict';
 import {
   REQUEST_HEATMAP_FOR_PROJECT_SUCCESS,
+  REQUEST_HEATMAP_FOR_PROJECT_FAILURE,
   REQUEST_HEATMAP_SUCCESS,
   REQUEST_PROJECTS_SUCCESS,
 
@@ -15,6 +16,8 @@ export const heatmap = (state = {}, action) => {
       return action.heatmapData;
     case REQUEST_HEATMAP_FOR_PROJECT_SUCCESS:
       return action.heatmapData;
+    case REQUEST_HEATMAP_FOR_PROJECT_FAILURE:
+      return action.error;
     default:
       return state;
   }
