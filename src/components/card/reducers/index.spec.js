@@ -3,7 +3,7 @@
  */
 'use strict';
 import {expect} from 'chai';
-import {heatmap, projects} from './';
+import {heatmap, heatmapErrors, projects} from './';
 
 describe('heatmap card reducers', () => {
   describe('heatmap reducer', () => {
@@ -24,14 +24,6 @@ describe('heatmap card reducers', () => {
       expect(heatmap(undefined, action)).to.equal(heatmapData);
     });
 
-    it('should return error for "request.heatmap.failure"', () => {
-      const error = "Failure!!";
-      const action = {
-        type: 'request.heatmap.failure',
-        error
-      };
-      expect(heatmap(undefined, action)).to.equal(error);
-    });
 
     it('should return given heatmap data for "request.heatmap.project.success"', () => {
       const heatmapData = {test: 'test'};
@@ -41,16 +33,26 @@ describe('heatmap card reducers', () => {
       };
       expect(heatmap(undefined, action)).to.equal(heatmapData);
     });
+  });
 
-    it('should return error for "request.heatmap.project.failure"', () => {
+  describe('heatmap errors reducer', () => {
+    it('should return errors for "request.heatmap.failure"', () => {
+      const error = "Failure!!";
+      const action = {
+        type: 'request.heatmap.failure',
+        error
+      };
+      expect(heatmapErrors(undefined, action)).to.deep.equal([error]);
+    });
+
+    it('should return errors for "request.heatmap.project.failure"', () => {
       const error = "Failure!!";
       const action = {
         type: 'request.heatmap.project.failure',
         error
       };
-      expect(heatmap(undefined, action)).to.equal(error);
+      expect(heatmapErrors(undefined, action)).to.deep.equal([error]);
     });
-
   });
 
   describe('projects reducer', () => {
