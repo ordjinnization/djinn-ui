@@ -5,7 +5,7 @@ import {requestHeatmapSuccess} from '../../../actions';
 import {fetchHeatmap} from '../../../api/djinnApi';
 import {fetchHeatmapSaga} from './';
 
-describe('heatmap', () => {
+describe('heatmap saga', () => {
   let gen;
 
   beforeEach(() => {
@@ -18,8 +18,8 @@ describe('heatmap', () => {
 
   it('should put expected data into the store', () => {
     gen.next();
-    const expected = put(requestHeatmapSuccess({test: 'test'}));
-    const result = gen.next({test: 'test'}).value;
+    const expected = put(requestHeatmapSuccess('test'));
+    const result = gen.next({data: 'test'}).value;
     expect(result).toEqual(expected);
   });
 });

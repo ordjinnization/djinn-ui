@@ -4,7 +4,14 @@
 'use strict';
 
 import {call, put, takeEvery} from 'redux-saga/effects';
-import {requestHeatMapForProjectSuccess, requestHeatmapSuccess, requestProjectsSuccess} from '../../../actions';
+import {
+  requestHeatMapForProjectFailure,
+  requestHeatMapForProjectSuccess,
+  requestHeatmapSuccess,
+  requestHeatmapFailure,
+  requestProjectsFailure,
+  requestProjectsSuccess
+} from '../../../actions';
 import {REQUEST_HEATMAP, REQUEST_HEATMAP_FOR_PROJECT} from '../../../actions/constants';
 import {fetchHeatmap, fetchHeatmapForProject, fetchProjects} from '../../../api/djinnApi';
 
@@ -13,8 +20,11 @@ export function* watchfetchHeatmap() {
 }
 
 export function* fetchHeatmapSaga() {
-  const response = yield call(fetchHeatmap);
-  yield put(requestHeatmapSuccess(response));
+  const {data, error} = yield call(fetchHeatmap);
+  if(data)
+    yield put(requestHeatmapSuccess(data));
+  else
+    yield put(requestHeatmapFailure(error));
 }
 
 export function* watchfetchHeatmapForProjectSaga() {
@@ -22,11 +32,17 @@ export function* watchfetchHeatmapForProjectSaga() {
 }
 
 export function* fetchHeatmapForProjectSaga({project}) {
-  const response = yield call(fetchHeatmapForProject, project);
-  yield put(requestHeatMapForProjectSuccess(response));
+  const {data, error} = yield call(fetchHeatmapForProject, project);
+  if (data)
+    yield put(requestHeatMapForProjectSuccess(data));
+  else
+    yield put(requestHeatMapForProjectFailure(error));
 }
 
 export function* fetchProjectsSaga() {
-  const response = yield call(fetchProjects);
-  yield put(requestProjectsSuccess(response));
+  const {data, error} = yield call(fetchProjects);
+  if (data)
+    yield put(requestProjectsSuccess(data));
+  else
+    yield put(requestProjectsFailure(error));
 }

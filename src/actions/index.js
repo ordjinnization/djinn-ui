@@ -59,3 +59,10 @@ export const requestProjectsSuccess = (projects) => {
     projects
   };
 };
+
+export const requestProjectsFailure = (errorMsg) => {
+  return {
+    type: REQUEST_PROJECTS_SUCCESS,
+    errorMsg
+  };
+};
