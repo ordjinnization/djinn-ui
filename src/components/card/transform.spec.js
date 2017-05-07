@@ -14,7 +14,7 @@ const CUSTOM_DATA = Object.freeze({
   colorscale: []
 });
 
-describe('data transformHeatmapData', () => {
+describe('transform', () => {
   it('should remove null values from data', () => {
     const data = transformHeatmapData(CUSTOM_DATA);
     expect(data.x[1]).to.be.equal('Unknown');

@@ -4,18 +4,16 @@
 
 'use strict';
 
-import React, {PropTypes} from 'react';
-import Paper from 'material-ui/Paper';
-import LinearProgress from 'material-ui/LinearProgress';
-import Heatmap from '../heatmap/Heatmap';
-import {connect} from 'react-redux';
-import {transformHeatmapData} from './transform';
-import {RadioButton, RadioButtonGroup} from 'material-ui/RadioButton';
 import DropDownMenu from 'material-ui/DropDownMenu';
+import LinearProgress from 'material-ui/LinearProgress';
 import MenuItem from 'material-ui/MenuItem';
+import Paper from 'material-ui/Paper';
+import {RadioButton, RadioButtonGroup} from 'material-ui/RadioButton';
 import TextField from 'material-ui/TextField';
-import IconButton from 'material-ui/IconButton';
-import Replay from 'material-ui/svg-icons/av/replay';
+import React, {PropTypes} from 'react';
+import {connect} from 'react-redux';
+import Heatmap from '../heatmap/Heatmap';
+import {transformHeatmapData} from './transform';
 
 const paperParentStyle = {
   paddingLeft: 20,
@@ -36,20 +34,20 @@ const paperChildStyle = {
 
 const HeatmapCard = (props) => {
   return (<div style={paperParentStyle}>
-      <Paper style={paperStyle}>
-        <div style={paperChildStyle}>
-          <span style={{float: 'left'}}>Display data from</span>
-          <div style={{float: 'left'}}>
-            {projectsDropDown("projects-selector", props.projects,
-              props.selectedProject, props.onChangeOfProject, props.allProjectsKey)}
-          </div>
-          <span style={{float: 'left', marginTop: -15, marginLeft: -10}}>
+    <Paper style={paperStyle}>
+      <div style={paperChildStyle}>
+        <span style={{float: 'left'}}>Display data from</span>
+        <div style={{float: 'left'}}>
+          {projectsDropDown("projects-selector", props.projects,
+            props.selectedProject, props.onChangeOfProject, props.allProjectsKey)}
+        </div>
+        <span style={{float: 'left', marginTop: -15, marginLeft: -10}}>
               since {daysTextField(props.onChangeOfDays)} weeks ago.
            </span>
-        </div>
-        {loadingOrHeatmap(props.heatmapData)}
-      </Paper>
-    </div>);
+      </div>
+      {loadingOrHeatmap(props.heatmapData)}
+    </Paper>
+  </div>);
 };
 
 /**
@@ -63,7 +61,7 @@ const HeatmapCard = (props) => {
  */
 const projectsDropDown = (id, projects, selectedProject, onChangeOfProject, allProjectsKey) => {
   return (<DropDownMenu id value={selectedProject} onChange={onChangeOfProject}
-                       style={{marginTop: -20, marginLeft: -10}}>
+                        style={{marginTop: -20, marginLeft: -10}}>
     {buildProjectMenuList(projects, allProjectsKey)}
   </DropDownMenu>);
 };
@@ -89,11 +87,11 @@ const buildProjectMenuList = (projects, allProjectsKey) => {
  */
 const daysTextField = (onChangeOfDays) => {
   return (<TextField maxLength={2}
-                    style={{width: 20}}
-                    hintText={"∞"}
-                    hintStyle={{fontSize: 25}}
-                    onChange={onChangeOfDays}
-                    disabled />);
+                     style={{width: 20}}
+                     hintText={"∞"}
+                     hintStyle={{fontSize: 25}}
+                     onChange={onChangeOfDays}
+                     disabled />);
 };
 
 /**

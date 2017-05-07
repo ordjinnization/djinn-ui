@@ -17,7 +17,7 @@ describe('Heatmap Card initialization', () => {
   it('should send a request for heatmap data', () => {
     const store = mockStore({heatmap: {}, projects: []});
     mount(<MuiThemeProvider><HeatmapCardContainer store={store} /></MuiThemeProvider>);
-    expect(store.getActions()).to.contain({type: 'REQUEST_HEATMAP'});
-    expect(store.getActions()).to.contain({type: 'REQUEST_PROJECTS'});
+    expect(store.getActions()).to.contain({type: 'request.heatmap'});
+    expect(store.getActions()).to.contain({type: 'request.projects'});
   });
 });

@@ -4,7 +4,7 @@
 'use strict';
 import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
-import {requestHeatmap, requestHeatmapForProject, requestProjects} from '../../actions/index';
+import {requestHeatmap, requestHeatmapForProject, requestProjects} from './actions';
 import HeatmapCard from './HeatmapCard.component';
 
 const allProjectsKey = 'allProjects';
@@ -47,11 +47,11 @@ class HeatmapCardContainer extends React.Component {
 }
 
 HeatmapCardContainer.propTypes = {
-  heatmapData: PropTypes.object.isRequired,
-  projects: PropTypes.array.isRequired,
-  requestHeatmap: PropTypes.func.isRequired,
-  requestHeatmapForProject: PropTypes.func.isRequired,
-  requestProjects: PropTypes.func.isRequired
+  heatmapData: PropTypes.object,
+  projects: PropTypes.array,
+  requestHeatmap: PropTypes.func,
+  requestHeatmapForProject: PropTypes.func,
+  requestProjects: PropTypes.func
 };
 
 const mapStateToProps = (state) => {
