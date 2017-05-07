@@ -9,6 +9,7 @@ import {
   REQUEST_HEATMAP_SUCCESS,
   REQUEST_PROJECTS,
   REQUEST_PROJECTS_SUCCESS,
+  REQUEST_PROJECTS_FAILURE,
   REQUEST_HEATMAP_FOR_PROJECT,
   REQUEST_HEATMAP_FOR_PROJECT_SUCCESS
 } from './constants';
@@ -26,10 +27,11 @@ export const requestHeatmapSuccess = (heatmapData) => {
   };
 };
 
-export const requestHeatmapFailure = (errorMsg) => {
+export const requestHeatmapFailure = (error) => {
+  const msg = `Error: "${error.message}" encountered when fetching heatmap data.`;
   return {
     type: REQUEST_HEATMAP_FAILURE,
-    errorMsg
+    error: msg
   };
 };
 
@@ -60,9 +62,10 @@ export const requestProjectsSuccess = (projects) => {
   };
 };
 
-export const requestProjectsFailure = (errorMsg) => {
+export const requestProjectsFailure = (error) => {
+  const msg = `Error: "${error.message}" encountered when fetching projects.`;
   return {
-    type: REQUEST_PROJECTS_SUCCESS,
-    errorMsg
+    type: REQUEST_PROJECTS_FAILURE,
+    error: msg
   };
 };

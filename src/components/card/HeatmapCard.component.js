@@ -33,9 +33,6 @@ const paperChildStyle = {
 };
 
 const HeatmapCard = (props) => {
-  if(props.error)
-    return (<div>FUCK!</div>);
-
   return (<div style={paperParentStyle}>
     <Paper style={paperStyle}>
       <div style={paperChildStyle}>
