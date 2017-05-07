@@ -47,11 +47,11 @@ class HeatmapCardContainer extends React.Component {
 }
 
 HeatmapCardContainer.propTypes = {
-  heatmapData: PropTypes.object.isRequired,
-  projects: PropTypes.array.isRequired,
-  requestHeatmap: PropTypes.func.isRequired,
-  requestHeatmapForProject: PropTypes.func.isRequired,
-  requestProjects: PropTypes.func.isRequired
+  heatmapData: PropTypes.object,
+  projects: PropTypes.array,
+  requestHeatmap: PropTypes.func,
+  requestHeatmapForProject: PropTypes.func,
+  requestProjects: PropTypes.func
 };
 
 const mapStateToProps = (state) => {
