@@ -5,7 +5,8 @@
 import {
   REQUEST_HEATMAP_FOR_PROJECT_SUCCESS,
   REQUEST_HEATMAP_SUCCESS,
-  REQUEST_PROJECTS_SUCCESS
+  REQUEST_PROJECTS_SUCCESS,
+
 } from '../actions/constants';
 
 export const heatmap = (state = {}, action) => {
