@@ -14,3 +14,5 @@ export const REQUEST_HEATMAP_FOR_PROJECT_FAILURE = 'request.heatmap.project.fail
 
 export const REQUEST_PROJECTS = 'request.projects';
 export const REQUEST_PROJECTS_SUCCESS = 'request.projects.success';
+export const REQUEST_PROJECTS_FAILURE = 'request.projects.failure';
+

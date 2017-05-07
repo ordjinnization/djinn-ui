@@ -54,13 +54,22 @@ describe('heatmap card reducers', () => {
   });
 
   describe('projects reducer', () => {
-    it('should list of return projects when action type is "request.projects.success"', () => {
+    it('should return a list of projects when action type is "request.projects.success"', () => {
       const projectList = {projects: ['shight', ' more-shight']};
       const action = {
         type: 'request.projects.success',
         projects: projectList
       };
       expect(projects(undefined, action)).to.equal(projectList.projects);
+    });
+
+    it('should return an error when action type is "request.projects.success"', () => {
+      const error = 'Failure!!';
+      const action = {
+        type: 'request.projects.failure',
+        error
+      };
+      expect(projects(undefined, action)).to.equal(error);
     });
   });
 });
