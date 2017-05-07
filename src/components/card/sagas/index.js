@@ -12,7 +12,7 @@ import {
   requestProjectsFailure,
   requestProjectsSuccess
 } from '../actions';
-import {REQUEST_HEATMAP, REQUEST_HEATMAP_FOR_PROJECT} from '../actions/constants';
+import {REQUEST_HEATMAP, REQUEST_HEATMAP_FOR_PROJECT, REQUEST_PROJECTS} from '../actions/constants';
 import {fetchHeatmap, fetchHeatmapForProject, fetchProjects} from '../../../api/djinnApi';
 
 export function* watchfetchHeatmap() {
@@ -37,6 +37,10 @@ export function* fetchHeatmapForProjectSaga({project}) {
     yield put(requestHeatMapForProjectSuccess(data));
   else
     yield put(requestHeatMapForProjectFailure(error));
+}
+
+export function* watchFetchProjectsSaga() {
+  yield takeEvery(REQUEST_PROJECTS, fetchProjectsSaga)
 }
 
 export function* fetchProjectsSaga() {
