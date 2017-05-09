@@ -2,12 +2,20 @@
  * Reducers for failtable.
  */
 'use strict';
-import {REQUEST_LATEST_SUCCESS} from '../action';
+import {REQUEST_LATEST_SUCCESS, REQUEST_LATEST_FAILURE} from '../action';
 
-export const latestFailures = (state = [], action) => {
+/**
+ * Handle events for the latest failures.
+ * @param state
+ * @param action
+ * @returns {*}
+ */
+export const latestFailures = (state = {hasError: false}, action) => {
   switch(action.type) {
     case REQUEST_LATEST_SUCCESS:
-      return action.data;
+      return {...state, failures: action.data};
+    case REQUEST_LATEST_FAILURE:
+      return state;
     default:
       return state;
   }
