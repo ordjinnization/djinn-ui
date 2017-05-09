@@ -5,7 +5,7 @@
 
 import {routerReducer} from 'react-router-redux';
 import {combineReducers} from 'redux';
-import {heatmap, heatmapErrors, projects, projectsErrors} from '../components/card/reducers';
+import {heatmap, heatmapErrors, projects, projectsErrors} from '../components/card/heatmap/reducers';
 
 const rootReducer = () => {
   return combineReducers({

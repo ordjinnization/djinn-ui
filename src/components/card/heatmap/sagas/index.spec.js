@@ -2,7 +2,7 @@
 import expect from 'expect';
 import {call, put} from 'redux-saga/effects';
 import {requestHeatmapSuccess} from '../actions';
-import {fetchHeatmap} from '../../../api/djinnApi';
+import {fetchHeatmap} from '../../../../api/djinnApi';
 import {fetchHeatmapSaga} from './';
 
 describe('heatmap saga', () => {

@@ -12,7 +12,7 @@ import {RadioButton, RadioButtonGroup} from 'material-ui/RadioButton';
 import TextField from 'material-ui/TextField';
 import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
-import Heatmap from '../heatmap/heatmap';
+import Heatmap from '../../heatmap/heatmap';
 import {transformHeatmapData} from './transform';
 
 const paperParentStyle = {
