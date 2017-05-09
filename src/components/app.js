@@ -4,7 +4,7 @@
 'use strict';
 
 import React, {PropTypes} from 'react';
-import Header from './common/Header';
+import Header from './common/header';
 import {connect} from 'react-redux';
 
 class App extends React.Component {

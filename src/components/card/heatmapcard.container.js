@@ -5,7 +5,7 @@
 import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {requestHeatmap, requestHeatmapForProject, requestProjects} from './actions';
-import HeatmapCard from './HeatmapCard.component';
+import HeatmapCard from './heatmapcard.component';
 
 const allProjectsKey = 'allProjects';
 
