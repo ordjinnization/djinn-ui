@@ -12,7 +12,7 @@ describe('failtable card reducers', () => {
         type: 'request.failtable.latest.success',
         data: 'I am data!'
       };
-      expect(latestFailures([], action)).to.be.equal('I am data!');
+      expect(latestFailures([], action)).to.be.deep.equal({failures: 'I am data!'});
     });
   })
 });

@@ -5,7 +5,7 @@
 
 import {routerReducer} from 'react-router-redux';
 import {combineReducers} from 'redux';
-import {latestFailures} from '../components/card/failtable/reducers';
+import {latestFailures} from '../components/card/failtable/reducer';
 import {heatmap, heatmapErrors, projects, projectsErrors} from '../components/card/heatmap/reducers';
 
 
