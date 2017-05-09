@@ -13,7 +13,7 @@ import {
   requestProjectsSuccess
 } from '../actions';
 import {REQUEST_HEATMAP, REQUEST_HEATMAP_FOR_PROJECT, REQUEST_PROJECTS} from '../actions/constants';
-import {fetchHeatmap, fetchHeatmapForProject, fetchProjects} from '../../../api/djinnApi';
+import {fetchHeatmap, fetchHeatmapForProject, fetchProjects} from '../../../../api/djinn';
 
 export function* watchfetchHeatmap() {
   yield takeEvery(REQUEST_HEATMAP, fetchHeatmapSaga);

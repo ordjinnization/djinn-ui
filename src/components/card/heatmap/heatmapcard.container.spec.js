@@ -5,7 +5,7 @@
 
 import React from 'react';
 import {mount, shallow} from 'enzyme';
-import HeatmapCardContainer from './HeatmapCard.container';
+import HeatmapCardContainer from './heatmapcard.container';
 import {expect} from 'chai';
 import configureStore from 'redux-mock-store';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';

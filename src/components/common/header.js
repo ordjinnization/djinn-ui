@@ -3,9 +3,9 @@
  */
 'use strict';
 
+import AppBar from 'material-ui/AppBar';
 import React, {PropTypes} from 'react';
 import {IndexLink, Link} from 'react-router';
-import AppBar from 'material-ui/AppBar';
 
 const STYLES = Object.freeze({
   appBar: {

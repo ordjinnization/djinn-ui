@@ -24,3 +24,12 @@ export function fetchProjects() {
     .then(({data}) => ({data}))
     .catch(error => ({error}));
 }
+
+/**
+ * Retrieve the latest results.
+ */
+export function fetchLatestResults() {
+  return djinn.get('/results/?latest=true')
+    .then(({data}) => ({data}))
+    .catch(error => ({error}))
+}

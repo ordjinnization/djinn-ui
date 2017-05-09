@@ -4,7 +4,7 @@
 'use strict';
 import React from 'react';
 import {mount, shallow} from 'enzyme';
-import Heatmap from './Heatmap';
+import Heatmap from './heatmap';
 import {expect} from 'chai';
 
 const CUSTOM_DATA = {
