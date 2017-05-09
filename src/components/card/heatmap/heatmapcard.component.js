@@ -7,39 +7,21 @@
 import DropDownMenu from 'material-ui/DropDownMenu';
 import LinearProgress from 'material-ui/LinearProgress';
 import MenuItem from 'material-ui/MenuItem';
-import Paper from 'material-ui/Paper';
 import {RadioButton, RadioButtonGroup} from 'material-ui/RadioButton';
 import TextField from 'material-ui/TextField';
 import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import Heatmap from '../../heatmap/heatmap';
 import {transformHeatmapData} from './transform';
+import DjinnCard from '../djinncard.component';
 
-const paperParentStyle = {
-  paddingLeft: 20,
-  paddingRight: 20
-};
-
-const paperStyle = {
-  paddingLeft: 20,
-  paddingRight: 20,
-  paddingBottom: 20,
-  height: '800px'
-};
-
-const paperChildStyle = {
+const contentStyle = {
   display: 'inline-block',
   paddingTop: 20
 };
 
 const HeatmapCard = (props) => {
-  return (<div style={paperParentStyle}>
-    <Paper style={paperStyle}>
-      <div style={paperParentStyle}>
-        {render(props)}
-      </div>
-    </Paper>
-  </div>);
+  return (<DjinnCard>{render(props)}</DjinnCard>);
 };
 
 /**
@@ -62,7 +44,7 @@ const render = (props) => {
  * @returns {XML}
  */
 const renderErrors = (heatmapErrors, projectErrors) => {
-  return (<div style={paperChildStyle}>
+  return (<div style={contentStyle}>
     <ul>
       {heatmapErrors.map(error => <li key={error}>{error}</li>)}
     </ul>
@@ -79,7 +61,7 @@ const renderErrors = (heatmapErrors, projectErrors) => {
  */
 const renderContent = (props) => {
   return (<div>
-    <div style={paperChildStyle}>
+    <div style={contentStyle}>
       <span style={{float: 'left'}}>Display data from</span>
       <div style={{float: 'left'}}>
         {projectsDropDown("projects-selector", props.projects,

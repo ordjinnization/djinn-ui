@@ -4,9 +4,8 @@
 'use strict';
 
 import React, {PropTypes} from 'react';
-import HeatmapCardContainer from '../card/heatmap/heatmapcard.container';
 import {connect} from 'react-redux';
-import FloatingActionButton from 'material-ui/FloatingActionButton';
+import HeatmapCardContainer from '../card/heatmap/heatmapcard.container';
 
 const HomePage = () => {
   return <HeatmapCardContainer />;
