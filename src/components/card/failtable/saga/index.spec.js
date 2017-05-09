@@ -5,7 +5,8 @@
 
 import {expect} from 'chai';
 import {call, put, takeEvery} from 'redux-saga/effects';
-import {fetchLatestFailures,watchFetchLatestFailures} from './';
+import {fetchLatestResultsSaga,watchFetchLatestResults} from './';
+import {requestLatestSuccess} from '../action';
 
 describe('failtable sagas', () => {
 
@@ -13,11 +14,27 @@ describe('failtable sagas', () => {
     let gen;
 
     beforeEach(() => {
-      gen = watchFetchLatestFailures();
+      gen = watchFetchLatestResults();
     });
 
-    it('should await "request.failtable.latest" action', () => {
-      expect(gen.next().value).to.deep.equal(takeEvery('request.failtable.latest', fetchLatestFailures));
+    it('should await action', () => {
+      expect(gen.next().value).to.deep.equal(takeEvery('request.failtable.latest', fetchLatestResultsSaga));
+    });
+  });
+
+  describe('fetchLatestFailures', () => {
+    let gen;
+
+    beforeEach(() => {
+      gen = fetchLatestResultsSaga();
+    });
+
+    it('should put success action', () => {
+      gen.next();
+      const t = {data:'test'};
+      const expected = put(requestLatestSuccess('test'));
+      const actual = gen.next(t).value;
+      expect(actual).to.deep.equal(expected);
     });
   });
 });

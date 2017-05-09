@@ -7,7 +7,7 @@ import {expect} from 'chai';
 
 describe('failtable card reducers', () => {
   describe('latestFailures', () => {
-    it('should return data for "request.failtable.latest.success" action', () => {
+    it('should return data for success action', () => {
       const action = {
         type: 'request.failtable.latest.success',
         data: 'I am data!'

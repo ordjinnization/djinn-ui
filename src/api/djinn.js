@@ -28,7 +28,7 @@ export function fetchProjects() {
 /**
  * Retrieve the latest results.
  */
-export function fetchLatest() {
+export function fetchLatestResults() {
   return djinn.get('/results/?latest=true')
     .then(({data}) => ({data}))
     .catch(error => ({error}))
