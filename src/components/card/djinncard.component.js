@@ -17,11 +17,6 @@ const paperStyle = {
   height: '800px'
 };
 
-const paperChildStyle = {
-  display: 'inline-block',
-  paddingTop: 20
-};
-
 const DjinnCard = ({children}) => {
   return (<div style={paperParentStyle}>
     <Paper style={paperStyle}>
