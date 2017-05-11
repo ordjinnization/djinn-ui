@@ -7,8 +7,7 @@ import Subheader from 'material-ui/Subheader';
 import React from 'react';
 import FailureListItem from './failurelistitem.component';
 
-const FailTable = ({failures}) => {
-  console.log(failures);
+const FailureList = ({failures}) => {
   const leftIcon = (<div>
     <i style={{color: 'red'}} className='material-icons md-36'>error</i>
   </div>);
@@ -16,9 +15,9 @@ const FailTable = ({failures}) => {
   return (<List>
     <Subheader>Recent Failures</Subheader>
     {failures.map((item) => {
-      return <FailureListItem  key={item.appName} {...item} leftIcon={leftIcon} />
+      return <FailureListItem key={item.appName} {...item} leftIcon={leftIcon} />
     })}
   </List>);
 };
 
-export default FailTable;
+export default FailureList;

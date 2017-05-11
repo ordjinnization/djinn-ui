@@ -8,7 +8,6 @@ import NavigationSubdirectoryArrowRight from 'material-ui/svg-icons/navigation/s
 import React, {PropTypes} from 'react';
 
 const FailureListItem = (props) => {
-  console.log(props);
   return (<ListItem
     primaryText={props.appName}
     secondaryText={props.description}
