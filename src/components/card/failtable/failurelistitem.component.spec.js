@@ -18,14 +18,12 @@ describe('failtable list item component', () => {
     const appName = 'test-app';
     const description = <div>desc</div>;
     const leftIcon = <div>icon</div>;
-    const onClickHandler = () => 'y';
 
     // Act
-    const wrapper = init({appName, description, leftIcon, onClickHandler});
+    const wrapper = init({appName, description, leftIcon});
 
     // Assert
     const props = wrapper.props();
-    expect(wrapper.at(0).key()).to.equal(appName);
     expect(props.primaryText).to.equal(appName);
     expect(props.secondaryText).to.deep.equal(description);
     expect(props.leftAvatar).to.equal(leftIcon);
