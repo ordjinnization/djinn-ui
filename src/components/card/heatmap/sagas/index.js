@@ -5,7 +5,6 @@
 
 import {call, put, takeEvery} from 'redux-saga/effects';
 import {
-  requestHeatMapForProjectFailure,
   requestHeatMapForProjectSuccess,
   requestHeatmapSuccess,
   requestHeatmapFailure,
@@ -40,7 +39,7 @@ export function* fetchHeatmapForProjectSaga({project}) {
 }
 
 export function* watchFetchProjectsSaga() {
-  yield takeEvery(REQUEST_PROJECTS, fetchProjectsSaga)
+  yield takeEvery(REQUEST_PROJECTS, fetchProjectsSaga);
 }
 
 export function* fetchProjectsSaga() {

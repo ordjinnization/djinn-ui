@@ -38,10 +38,10 @@ describe('failtable card reducers', () => {
           ]
         },
       };
-      expect(latestFailures([], action)).to.be.deep.equal({failures: [{
+      expect(latestFailures(undefined, action)).to.be.deep.equal({failures: [{
         appName: 'test',
         description: 'test-stage'
-      }]});
+      }], hasError: false});
     });
-  })
+  });
 });
