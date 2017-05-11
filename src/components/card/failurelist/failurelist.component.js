@@ -15,7 +15,7 @@ const FailureList = ({failures}) => {
   return (<List>
     <Subheader>Recent Failures</Subheader>
     {failures.map((item) => {
-      return <FailureListItem key={item.appName} {...item} leftIcon={leftIcon} />
+      return <FailureListItem key={item.appName} {...item} leftIcon={leftIcon} />;
     })}
   </List>);
 };

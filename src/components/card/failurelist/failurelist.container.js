@@ -20,10 +20,10 @@ class FailureListContainer extends React.Component {
 
   render() {
     const data = this.props.latestFailures;
-    return <DjinnCard>
+    return (<DjinnCard>
       {data.hasError ? <div>Error occurred.</div> :
         <FailureList failures={this.props.latestFailures.failures} />}
-    </DjinnCard>;
+    </DjinnCard>);
   }
 }
 
