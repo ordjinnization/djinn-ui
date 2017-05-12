@@ -8,7 +8,7 @@ import {
   watchfetchHeatmapForProjectSaga,
   watchFetchProjectsSaga
 } from '../components/card/heatmap/sagas';
-import {watchFetchLatestResults} from '../components/card/failtable/saga';
+import {watchFetchLatestResults} from '../components/card/failurelist/saga';
 
 export default function* rootSaga() {
   yield [

@@ -31,5 +31,5 @@ export function fetchProjects() {
 export function fetchLatestResults() {
   return djinn.get('/results/?latest=true')
     .then(({data}) => ({data}))
-    .catch(error => ({error}))
+    .catch(error => ({error}));
 }

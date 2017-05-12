@@ -40,6 +40,7 @@ let jsdom = require('jsdom').jsdom;
 
 let exposedProperties = ['window', 'navigator', 'document'];
 
+global.DOMParser = require('jsdom/lib/jsdom/living/domparsing/DOMParser-impl').implementation;
 global.document = jsdom('');
 global.window = document.defaultView;
 Object.keys(document.defaultView).forEach((property) => {
