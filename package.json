@@ -75,7 +75,7 @@
     "mocha": "3.2.0",
     "nock": "9.0.2",
     "npm-run-all": "4.0.0",
-    "open": "0.0.5",
+    "open": "7.0.0",
     "react-addons-test-utils": "15.4.2",
     "redux-immutable-state-invariant": "1.2.4",
     "redux-mock-store": "^1.2.1",
